@@ -70,6 +70,7 @@ typedef struct builtInCommands
 	int (*func)(config *build);
 } type_b;
 
+
 /* main */
 config *configInit(config *build);
 
@@ -115,7 +116,7 @@ int countArgs(char **args);
 int _atoi(char *s);
 
 /* shell */
-void shell(config *build);
+void shell(char **argv);
 void checkAndGetLine(config *build);
 void forkAndExecute(config *build);
 void stripComments(char *str);
@@ -123,6 +124,7 @@ void convertLLtoArr(config *build);
 
 /* _getenv */
 char *_getenv(char *input, char **environ);
+
 
 /* error_handler */
 void errorHandler(config *build);

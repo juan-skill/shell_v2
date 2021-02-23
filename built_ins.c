@@ -11,8 +11,6 @@ _Bool findBuiltIns(config *build)
 	type_b getBuiltIns[] = {
 		{"exit", exitFunc},
 		{"env", envFunc},
-		{"history", historyFunc},
-		{"alias", aliasFunc},
 		{"cd", cdFunc},
 		{"setenv", setenvFunc},
 		{"unsetenv", unsetenvFunc},
@@ -20,7 +18,7 @@ _Bool findBuiltIns(config *build)
 		{NULL, NULL}
 	};
 
-	while (getBuiltIns[i].command)
+	while (getBuiltIns[i].command != NULL)
 	{
 		if (_strcmp(build->args[0], getBuiltIns[i].command) == 0)
 		{
@@ -63,33 +61,5 @@ int exitFunc(config *build)
 		freeMembers(build);
 		exit(exitStatus);
 	}
-	return (1);
-}
-
-/**
- * historyFunc - displays command history
- * @build: input build
- * Return: 1 on success, 0 on failure
- */
-int historyFunc(config *build)
-{
-	char *str = "Currently in development\n";
-
-	(void)build;
-	write(STDOUT_FILENO, str, _strlen(str));
-	return (1);
-}
-
-/**
- * aliasFunc - displays local aliases
- * @build: input build
- * Return: 1 on success, 0 on failure
- */
-int aliasFunc(config *build)
-{
-	char *str = "Currently in development\n";
-
-	(void)build;
-	write(STDOUT_FILENO, str, _strlen(str));
 	return (1);
 }

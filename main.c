@@ -1,38 +1,18 @@
 #include "holberton.h"
 
 /**
- * main - entry point for application
- * @ac: argument count
- * @av: argument vector
- * Return: 0 on success
+ * main - Entry point
+ *
+ * @argc: number of elements of array of arguments
+ * @argv: array of arguments
+ *
+ * Return: Always (SUCCESS)
  */
-int main(int ac, char **av)
+int main(int argc, char *argv[])
 {
-	config build;
 
-	(void)ac;
-	signal(SIGINT, sigintHandler);
-	configInit(&build);
-	build.shellName = av[0];
-	shell(&build);
-	return (0);
-}
+	(void) argc;
+	shell(argv);
 
-/**
- * configInit - initialize member values for config struct
- * @build: input build
- * Return: build with initialized members
- */
-config *configInit(config *build)
-{
-	build->env = generateLinkedList(environ);
-	build->envList = NULL;
-	build->args = NULL;
-	build->buffer = NULL;
-	build->path = _getenv("PATH", environ);
-	build->fullPath = NULL;
-	build->lineCounter = 0;
-	build->shellName = NULL;
-	build->errorStatus = 0;
-	return (build);
+	return (EXIT_SUCCESS);
 }
